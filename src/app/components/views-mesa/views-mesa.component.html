@@ -1,0 +1,55 @@
+<!-- Button trigger modal -->
+<button id="btnModalMesa" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+   <strong>Administrar Mesas</strong> 
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Administrar Mesas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row container">
+                        <div class="col-md-12">
+                            <table id="tableMesas" class="table table-responsive table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" width="200px">Num. Mesa</th>
+                                        <th scope="col" width="200px">Estado</th>
+                                        <th scope="col" width="600px"> Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of mesas; let indice = index">
+                                        <td>{{ item.id }}</td>
+                                        <td>{{ item.estado | uppercase }}</td>
+                                        <td>
+                                            <button type=" button " class="btn btn-warning" id="BtnMesa" (click)="editarMesa(item)">
+                            Disponible
+                          </button>
+                                            <button type=" button " class="btn btn-danger " id="BtnMesa" (click)="editarMesaR(item)">
+                            Reservada
+                          </button>
+                                            <button type=" button " class="btn btn-info " id="BtnMesa" (click)="editarMesaOc(item)">
+                            Ocupada
+                          </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

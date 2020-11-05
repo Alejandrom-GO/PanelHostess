@@ -1,0 +1,112 @@
+<div id="logo">
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/logoByN.png" width="90" height="90" class="d-inline-block align-top" alt="" />
+        </a>
+    </nav>
+</div>
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 id="titulo" class="font-weight-bold">Reservaciones</h1>
+            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                <strong>
+          El cliente tiene 10 minutos de tolerancia por cada reservacion</strong>&nbsp;realizada despues de este tiempo la reservacion tendra que ser&nbsp;&nbsp;
+                <span class="badge badge-warning">Cancelada.</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <app-views-mesa></app-views-mesa>
+
+            <table id="tableReser" class="table table-responsive table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Num.</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Nombre</th>
+                        <th s cope="col">Apellidos</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Mesa</th>
+                        <th scope="col">Personas</th>
+                        <th scope="col" width="250px">Detalles</th>
+                        <th scope="col">Num. Celular</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col" width="180px"> Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items; let indice = index">
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ indice + 1 }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.fecha | date: "mediumDate" }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.firstname }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.surname }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.hora }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.mesa }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.personas }}</td>
+                        <td *ngIf="item.detalles != '' && item.estado != 'cancelado'">{{ item.detalles }}</td>
+                        <td *ngIf="item.detalles == '' && item.estado == 'pendiente' || item.estado == 'confirmado'">Sin detalles</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.number }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">{{ item.estado }}</td>
+                        <td *ngIf="item.estado == 'pendiente' || item.estado == 'confirmado'">
+                            <button type=" button " class="btn btn-warning" id="BtnDlt" data-toggle="modal" data-target="#update" (click)="editar(item)">
+                Modificar
+              </button>
+                        </td>
+
+                        <!-- Modal Update -->
+                        <div class="modal" id="update" tabindex="-1" aria-labelledby="update" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="update">
+                                            Estado de la reservacion
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form (ngSubmit)="editarform()" id="editarform">
+                                                <div class="controls">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="form_estado ">Cambia el estado de la reservacion:
+                                </label>
+                                                                <select name="estado" class="form-control" [(ngModel)]="itemEditar.estado" required>
+                                  <option value="{{ itemEditar.estado }}" selected>
+                                    {{ itemEditar.estado }}
+                                  </option>
+                                  <option value="pendiente">Pendiente</option>
+                                  <option value="confirmado">Confirmado</option>
+                                  <option value="cancelado">Cancelado</option>
+                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button " class="btn btn-secondary" data-dismiss="modal">
+                            Cerrar
+                          </button>
+                                                    <button id="btnUpdt" type="submit" class="btn btn-primary" (click)="cerrar()">
+                            Modificar
+                          </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

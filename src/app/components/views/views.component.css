@@ -1,0 +1,32 @@
+#tableReser {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+table {
+    text-align: center;
+}
+
+#tablaMesas {
+    border-radius: 5px;
+}
+
+#BtnDlt {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#BtnUpt {
+    margin-bottom: 10px;
+}
+
+#logo {
+    margin-bottom: -40px;
+}
+
+#titulo {
+    text-align: center;
+}

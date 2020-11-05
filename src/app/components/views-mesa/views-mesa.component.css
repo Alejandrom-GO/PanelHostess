@@ -1,0 +1,21 @@
+#BtnMesa {
+    margin-right: 10px;
+}
+
+#tableMesas {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+table {
+    text-align: center;
+}
+
+#btnModalMesa {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-style: bold;
+}
